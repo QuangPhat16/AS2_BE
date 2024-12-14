@@ -8,7 +8,7 @@ const getMovies = async (req, res) => {
    try{
       //findall() return an array
       movies = await Movie.findAll()
-      if(!movies.lenght) return res.status(404).json({ "message": "No movies to be found" })
+      if(!movies.length) return res.status(404).json({ "message": "No movies to be found" })
 
       for(let i = 0; i<movies.length; i++){
          countries = Country.findAll({
@@ -25,7 +25,7 @@ const getMovies = async (req, res) => {
          })
          movies[i].genres = genres
       }
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -94,14 +94,14 @@ const updateMovie = async (req, res) => {
       movie = await Movie.findByPk(movieId)
       if(!movie) return res.status(404).json({message: "No movie is found"})
       //delet Genres and countries first
-      await Country.destroy({where: movieId})
+      await Country.destroy({where: {movieId}})
 
-      await Genre.destroy({where: movieId})
+      await Genre.destroy({where: {movieId}})
 
-      await Movie.destroy({where: movieId})
+      await Movie.destroy({where: {movieId}})
 
       return res.status(200).json({message: "Movie is deleted"})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }

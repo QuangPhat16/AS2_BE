@@ -12,7 +12,7 @@ const getOrderCB_FD = async (req, res) => {
       })
 
       return CB_FDs
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -20,7 +20,7 @@ const getOrderCB_FD = async (req, res) => {
 const createOrderCB_FD = async (req, res) => {
    try {
       const {orderId, comboId, FDId, comboQuantity, FDQuantity } = req.body;
-      if(!comboId&&!FDId) return null
+      if(!comboId && !FDId) return null
 
       if(comboId.length){
          for(let i = 0; i< comboId.length; i++){
@@ -43,9 +43,9 @@ const createOrderCB_FD = async (req, res) => {
    try{
       orderId = req.body
       deleted = await hasCB_FD.destroy({where: {orderId}})
-      if(!deleted[0]) return null
+      if(!deleted) return null
       return true
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }

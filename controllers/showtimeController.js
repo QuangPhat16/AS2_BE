@@ -16,9 +16,9 @@ const getShowtimes = async (req, res) => {
          group: ['movieId'], 
       })
 
-      if(!showtimes.lenght) return res.status(404).json({ "message": "No showtimes to be found" })
+      if(!showtimes.length) return res.status(404).json({ "message": "No showtimes to be found" })
 
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -60,7 +60,7 @@ const updateShowtime = async (req, res) => {
 
       await Showtime.destroy({where: showtimeId})
       return res.status(200).json({message: "Showtime is delete"})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }

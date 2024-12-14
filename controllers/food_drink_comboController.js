@@ -9,9 +9,9 @@ const getFoodDrink = async (req, res) => {
    try{
       const food_drinks = await Showtime.findAll()
 
-      if(!food_drinks.lenght) return res.status(404).json({ "message": "No food or drinks to be found" })
+      if(!food_drinks.length) return res.status(404).json({ "message": "No food or drinks to be found" })
       return res.status(200).json(food_drinks)
-   }catch(err){
+   }catch(error){
 
       return res.status(500).json({ error });
    }
@@ -22,9 +22,9 @@ const getCombos = async (req, res) => {
    try{
       const combos = await Combo.findAll()
 
-      if(!combos.lenght) return res.status(404).json({ "message": "No combo to be found" })
+      if(!combos.length) return res.status(404).json({ "message": "No combo to be found" })
       return res.status(200).json(combos)
-   }catch(err){
+   }catch(error){
       
       return res.status(500).json({ error });
    }
@@ -47,12 +47,12 @@ const createFoodDrink = async (req, res) => {
  const createCombo = async (req, res) => {
    try {
       const { comboName, comboPrice, FD_list, quantity_list } = req.body;
-      if(!comboName||!FD_list.lenght||!quantity_list.lenght) 
+      if(!comboName||!FD_list.length||!quantity_list.length) 
          return res.status(400).json({message:'Combo creation failed, some fields are missing'})
       
       await Combo.create({comboName, comboPrice})
 
-      for(let i = 0; i > FD_list.lenght; i++){
+      for(let i = 0; i > FD_list.length; i++){
          await comboHas.create({comboId, FDId: FD_list[i], FDquantity: quantity_list[i]})
       }
       return res.status(201).json({message:'Adding combo successfully'});
@@ -106,7 +106,7 @@ const deleteFoodDrink = async (req, res) => {
       if(!showtime) return res.status(404).json({message: "No food or drink is found"})
       await FD.destroy({where: FDId})
       return res.status(200).json({message: "Food or drink is delete"})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -121,7 +121,7 @@ const deleteCombo = async (req, res) => {
       await Combo.destroy({where:{comboId}})
 
       return res.status(200).json({message: "Combo is delete"})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }

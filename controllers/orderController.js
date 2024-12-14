@@ -22,7 +22,7 @@ const getOrders = async (req, res) => {
       }
 
       return res.status(200).json({orders})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -58,7 +58,7 @@ const createOrder = async (req, res) => {
       
       await Order.destroy({where: orderId})
       return res.status(200).json({message: "Order is successfully canceled"})
-   }catch(err){
+   }catch(error){
 
       return res.status(500).json({ error });
    }

@@ -15,6 +15,6 @@ app.listen(3002, async ()=>{
    console.log('Server is running')
    await sequelize.authenticate()
    console.log('Database connected \n')
-   await sequelize.sync({alter: true})
+   await sequelize.sync({alter: false})
    console.log('Database synced \n')
 })

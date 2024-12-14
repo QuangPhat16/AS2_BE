@@ -15,7 +15,7 @@ const getTickets = async (req, res) => {
       if(!tickets.length) return null
       return tickets
 
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
@@ -27,11 +27,10 @@ const createTickets = async (req, res) => {
       if(checkNull({showtimeId, orderId, customerEmail })) 
          return res.status(400).json({message:'Tickets creation failed, some fields are missing'})
       
-      for(let i = 0; i<seatId.lenght; i++){
+      for(let i = 0; i<seatId.length; i++){
          ticket = await Ticket.create({showtimeId, orderId, seatId, customerEmail: seatId[i]})
          await showtimeSeat.create({showtimeId, ticketId:  ticket.ticketId})
       }
-
       return true
    } catch (error) {
       return res.status(500).json({ error });
@@ -47,10 +46,10 @@ const createTickets = async (req, res) => {
       const [hours, minutes, seconds] = showtime.startTime.split(':').map(Number);
       if(hours - now.getHours() < 1) return res.status(400).json({message: "Too late to cancel ticket"})
 
-      await showtimeSeat.destroy({where: ticketId})
-      await Ticket.destroy({where: ticketId})
+      await showtimeSeat.destroy({where: {ticketId}})
+      await Ticket.destroy({where: {ticketId}})
       return res.status(200).json({message: "Ticket is deleted"})
-   }catch(err){
+   }catch(error){
       return res.status(500).json({ error });
    }
 }
