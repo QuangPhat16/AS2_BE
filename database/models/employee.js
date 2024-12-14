@@ -36,12 +36,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     etype: {
-      type: DataTypes.ENUM('CASHIER', 'CLEANER', 'CINEMA'),
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isIn: [['CASHIER', 'CLEANER', 'CINEMA']], 
+      },
     },
     workType: {
-      type: DataTypes.ENUM('PARTIME', 'FULLTIME'),
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isIn: [['PARTIME', 'FULLTIME']], 
+      },
     },
     monthlySalary:{
       type: DataTypes.INTEGER,

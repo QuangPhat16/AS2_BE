@@ -27,8 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     },
    //  what are room types?
     seatType: {
-      type: DataTypes.ENUM('SINGLE','COUPLE','VIP'),
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isIn: [['SINGLE','COUPLE','VIP']],
+      },
     },
     // reference seat price entity
     //add store precedure

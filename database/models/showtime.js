@@ -30,8 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     format: {
-      type: DataTypes.ENUM('2D','3D','IMAX'),
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isIn: [['2D','3D','IMAX']],
+      },
     },
     startTime: {
       type: DataTypes.TIME,

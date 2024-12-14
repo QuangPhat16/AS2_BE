@@ -32,11 +32,11 @@ const getMovies = async (req, res) => {
 //Create movie 
 const createMovie = async (req, res) => {
    try {
-      const { moviename, movieLabel, premireDay, trailer, duration, country, genre } = req.body;
-      if(checkNull({ moviename, movieLabel, premireDay, trailer, duration })) 
+      const { movieName, movieLabel, premiereDay, trailer, duration, country, genre } = req.body;
+      if(checkNull({ movieName, movieLabel, premiereDay, trailer, duration })) 
          return res.status(400).json({message:'Course creation failed, some fields are missing'})
      
-      newMovie = await Movie.create({  moviename, movieLabel, premireDay, trailer, duration });
+      newMovie = await Movie.create({  movieName, movieLabel, premiereDay, trailer, duration });
 
       //add country and genre
       if(country.length){
@@ -59,8 +59,8 @@ const createMovie = async (req, res) => {
 //Update movies
 const updateMovie = async (req, res) => {
    try {
-      const { movieId, moviename, movieLabel, premireDay, trailer, duration, country, genre } = req.body;
-      params = filterNull({ moviename, movieLabel, premireDay, trailer, duration })
+      const { movieId, movieName, movieLabel, premiereDay, trailer, duration, country, genre } = req.body;
+      params = filterNull({ movieName, movieLabel, premiereDay, trailer, duration })
      
       update = await Movie.update(params, {where: {movieId}});
 
@@ -91,7 +91,7 @@ const updateMovie = async (req, res) => {
  const deleteMovie = async (req, res) => {
    try{
       movieId = req.body
-      movie = Movie.findByPk(movieId)
+      movie = await Movie.findByPk(movieId)
       if(!movie) return res.status(404).json({message: "No movie is found"})
       //delet Genres and countries first
       await Country.destroy({where: movieId})

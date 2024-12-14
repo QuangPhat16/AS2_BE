@@ -1,14 +1,14 @@
 'use strict';
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Countrty extends Model {
+  class Country extends Model {
 
     static associate(models) {
       // define association here
     }
     
   }
-  Countrty.init({
+  Country.init({
     countryId:{
       type: DataTypes.STRING,
       primaryKey: true,
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   },{
     sequelize,
-    modelName: 'Countrty',
+    modelName: 'Country',
   });
-  return Countrty;
+  return Country;
 };

@@ -19,8 +19,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     type: {
-      type: DataTypes.ENUM('ACTOR', 'DIRECTOR'),
+      type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        isIn: [['ACTOR', 'DIRECTOR']],
+      },
     },
     birthDay: {
       type: DataTypes.DATEONLY,
