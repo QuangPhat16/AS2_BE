@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Showtime.init({
-    showtimerId:{
+    showtimeId:{
       type: DataTypes.STRING,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,

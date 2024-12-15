@@ -11,6 +11,9 @@
         "trustServerCertificate": true 
       }
     },
+    "define":{
+      "timestamps": false
+    },
     "logging": false                 
   },
   "test": {

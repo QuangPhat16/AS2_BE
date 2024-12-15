@@ -9,11 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     
   }
   Country.init({
-    countryId:{
-      type: DataTypes.STRING,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-    },
     countryName: {
       type: DataTypes.STRING,
       allowNull: false,
