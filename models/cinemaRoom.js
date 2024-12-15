@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     
   }
   cinemaRoom.init({
-    roomId:{
+    cinemaRoomId:{
       type: DataTypes.STRING,
       primaryKey: true,
     },

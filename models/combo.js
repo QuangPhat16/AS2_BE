@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    combName: {
+    comboName: {
       type: DataTypes.STRING,
       allowNull: false
     },

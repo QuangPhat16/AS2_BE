@@ -8,11 +8,6 @@ module.exports = (sequelize, DataTypes) => {
     } 
   }
   movieGenre.init({
-    movieGenreId:{
-      type: DataTypes.STRING,
-      primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-    },
     movieGenreName: {
       type: DataTypes.STRING,
       allowNull: false,

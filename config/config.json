@@ -1,0 +1,33 @@
+{
+  "development": {
+    "username": "phat_admin",    
+    "password": "163204p",   
+    "database": "movie_theater",    
+    "host": "localhost",            
+    "dialect": "mssql",
+    "dialectOptions": {
+      "options": {
+        "encrypt": false,            
+        "trustServerCertificate": true 
+      }
+    },
+    "define":{
+      "timestamps": false
+    },
+    "logging": false                 
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
